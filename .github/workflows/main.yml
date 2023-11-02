@@ -14,11 +14,11 @@ jobs:
     - name: python version
       run: python --version
     - name: pip install
-      run: pip install -r requirments.txt
+      run: pip install -r requeriments.txt
     - name: download dataset
-      run: wget -O data/heart.csv "https://firebasestorage.googleapis.com/v0/b/heart-model-d40a0.appspot.com/o/heart-disease_100.csv?alt=media&token=4067d81a-40f2-4d96-b6bb-b878f72f6ca5" ${{github.event.client_payload.dataseturl}}
+      run: wget -O data/sepsis_model_19.csv "https://firebasestorage.googleapis.com/v0/b/sepsis-f0588.appspot.com/o/sepsis_model_19.csv?alt=media&token=ec5582da-bb90-4da9-841d-afc4aceec594"
     - name: cat dataset
-      run: cat data/heart-disease.csv
+      run: cat data/sepsis_model_19.csv
     - name: train model
       run: python model/train.py
     - name: docker build
