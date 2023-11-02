@@ -12,7 +12,7 @@ imputer = SimpleImputer(strategy="mean")  # Puedes usar "mean" u otra estrategia
 
 # Aplicar la imputación a tus datos
 
-df = pd.read_csv(pathlib.Path('/home/francisco/sepsis_model/deploy-ml/model/sepsis.csv'))
+df = pd.read_csv(pathlib.Path('model/sepsis.csv'))
 y = df.pop('hospital_outcome_1alive_0dead')
 X = df
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
