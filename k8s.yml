@@ -1,0 +1,35 @@
+#manifest
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sepsismodel-deployment
+spec:
+  selector:
+    matchLabels:
+      app: sepsismodel-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sepsismodel-server
+    spec:
+      containers:
+      - name: sepsismodel-container
+        #image: gcr.io/tensorflow-serving/resnet 
+        image: docker.io/frankisoft/sepsismodel:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: sepsismodel-service
+  name: sepsismodel-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: sepsismodel-server
+  type: LoadBalancer
